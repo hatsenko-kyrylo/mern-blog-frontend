@@ -43,7 +43,6 @@ export const Login = () => {
 
         if ('token' in data.payload) {
             window.localStorage.setItem('token', data.payload.token);
-            window.localStorage.setItem('avatarUrl', data.payload.avatarUrl);
         }
     };
 

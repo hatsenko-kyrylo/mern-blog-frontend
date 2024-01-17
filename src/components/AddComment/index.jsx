@@ -10,14 +10,16 @@ import { selectIsAuth } from '../../redux/slices/auth';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from '../../axios';
+import { authData } from '../../redux/slices/auth';
 
 export const Index = () => {
     const isAuth = useSelector(selectIsAuth);
+    const userData = useSelector(authData);
+    console.log(userData);
     const { id } = useParams();
 
     const [isLoading, setLoading] = useState(false);
     const [text, setText] = useState('');
-    const avatar = useState(window.localStorage.getItem('avatarUrl'));
 
     const onSubmit = async () => {
         try {
@@ -37,7 +39,10 @@ export const Index = () => {
         <>
             {isAuth && (
                 <div className={styles.root}>
-                    <Avatar classes={{ root: styles.avatar }} src={avatar} />
+                    <Avatar
+                        classes={{ root: styles.avatar }}
+                        src={userData.avatarUrl}
+                    />
                     <div className={styles.form}>
                         <TextField
                             label='Написать комментарий'

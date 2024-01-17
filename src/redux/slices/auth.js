@@ -78,5 +78,5 @@ const { reducer, actions } = authSlice;
 
 export const { logout } = actions;
 export const selectIsAuth = (state) => Boolean(state.auth.data);
-
+export const authData = (state) => state.auth.data;
 export default reducer;
